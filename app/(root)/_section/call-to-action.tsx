@@ -86,7 +86,7 @@ export default function CallToActionSection() {
         Rejoignez notre plateforme et augmentez votre visibilité
       </p>
 
-      <Button className='mt-6 text-white font-semibold text-xl'>S'inscrire maintenant</Button>
+      <Button className='mt-6 text-white font-semibold text-xl py-6 px-8'>S'inscrire maintenant</Button>
     </div>
   );
 }
