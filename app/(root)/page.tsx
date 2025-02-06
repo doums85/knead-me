@@ -4,7 +4,8 @@ import { Button, ImagesSlider, Skeleton } from "@/components/ui";
 import { FadeIn } from "@/components/animation";
 import SearchSection from "./_section/search";
 import { ProfessionalCard } from "@/components/ui/custom-card";
-import { Container } from "@/components/shared";
+import { Container, TestimonialsSection } from "@/components/shared";
+import CallToActionSection from "./_section/call-to-action";
 
 const professionals = [
   {
@@ -105,6 +106,37 @@ const professionals = [
   },
 ];
 
+const testimonials = [
+  {
+    author: {
+      name: "Sophie Martin",
+      handle: "@sophiem",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+    },
+    text: "J'ai découvert un véritable havre de paix grâce à KneadMe. Le massage était exactement ce dont j'avais besoin pour me détendre après une semaine stressante.",
+    href: "https://twitter.com/sophiem",
+  },
+  {
+    author: {
+      name: "Thomas Dubois",
+      handle: "@thomasd",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    },
+    text: "La qualité des massages est exceptionnelle. Les professionnels sont très compétents et à l'écoute. Je recommande vivement !",
+    href: "https://twitter.com/thomasd",
+  },
+  {
+    author: {
+      name: "Marie Laurent",
+      handle: "@mariel",
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+    },
+    text: "Réserver un massage n'a jamais été aussi simple. L'application est intuitive et les thérapeutes sont tous certifiés. Une expérience 5 étoiles !",
+  },
+];
 export default async function Home() {
   const { banner_section } = await getHome();
 
@@ -136,6 +168,16 @@ export default async function Home() {
           <ProfessionalCard {...{ ...provider }} key={index} />
         ))}
       </Container>
+
+      <TestimonialsSection
+        title="Ce que disent nos clients"
+        description="Découvrez les expériences de relaxation et de bien-être partagées par notre communauté"
+        testimonials={testimonials}
+      />
+
+      
+      <CallToActionSection />
+
     </main>
   );
 }
