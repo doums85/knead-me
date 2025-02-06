@@ -19,28 +19,28 @@ export default function ProfessionalCard({ name, address, image, services }: any
           className="object-cover w-full h-full rounded-md"
         />
       </div>
-      <CardContent className="pt-6">
+      <CardContent className="pt-6 px-0">
         <div className="space-y-4">
           {Array.isArray(services) &&
             services.map((service, index) => (
-              <div key={index} className="grid grid-cols-[1fr_0.5fr_0.5fr] border-b pb-2">
+              <div key={index} className="grid grid-cols-[1fr_0.5fr] border-b pb-2">
                 <p className="font-medium">{service.name}</p>
 
-                <div className="">
+                <div className="text-right">
                   <span className="font-medium">{service.price} €</span>
                   <p className="text-sm text-muted-foreground">{service.time}</p>
                 </div>
-                <Button variant={"darker"}>Réserver</Button>
+                {/* <Button variant={"darker"}>Réserver</Button> */}
               </div>
             ))}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between pt-4">
+      <CardFooter className="grid grid-cols-2 pt-4 px-0">
         <Link href="#" className="text-sm text-muted-foreground hover:underline">
-          Voir profile →
+        Voir tous les prix →
         </Link>
-        <Button variant="secondary" className="bg-black text-white hover:bg-gray-800">
-          Voir tous les prix
+        <Button variant="darker" className="w-full">
+          Réserver
         </Button>
       </CardFooter>
     </Card>
