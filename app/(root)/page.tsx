@@ -3,6 +3,107 @@ import getHome from "@/sanity/queries/getHome";
 import { Button, ImagesSlider, Skeleton } from "@/components/ui";
 import { FadeIn } from "@/components/animation";
 import SearchSection from "./_section/search";
+import { ProfessionalCard } from "@/components/ui/custom-card";
+import { Container } from "@/components/shared";
+
+const professionals = [
+  {
+    name: "Zen Relaxation",
+    image:
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "123 Avenue de la Paix, 75000 Paris, France",
+    services: [
+      { name: "Massage relaxant", time: "60 minutes", price: 70 },
+      { name: "Massage suédois", time: "90 minutes", price: 90 },
+    ],
+    rating: 4.5,
+    reviewsCount: 150,
+  },
+  {
+    name: "Espace Bien-Être",
+    image:
+      "https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "456 Rue du Bienfait, 31000 Toulouse, France",
+    services: [
+      { name: "Massage deep tissue", time: "60 minutes", price: 80 },
+      { name: "Massage du dos", time: "30 minutes", price: 40 },
+    ],
+    rating: 4.7,
+    reviewsCount: 200,
+  },
+  {
+    name: "Harmonie Corps",
+    image:
+      "https://images.unsplash.com/photo-1537673156864-5d2c72de7824?q=80&w=2952&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "789 Allée du Calme, 06000 Nice, France",
+    services: [
+      { name: "Massage aux pierres chaudes", time: "60 minutes", price: 85 },
+      { name: "Réflexologie", time: "45 minutes", price: 50 },
+    ],
+    rating: 4.2,
+    reviewsCount: 90,
+  },
+  {
+    name: "Sérénité Urbaine",
+    image:
+      "https://images.unsplash.com/photo-1598555748505-ccca0d9b9f7b?q=80&w=2994&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "101 Rue de l'Harmonie, 13000 Marseille, France",
+    services: [
+      { name: "Massage thaï", time: "90 minutes", price: 95 },
+      { name: "Massage cranien", time: "45 minutes", price: 55 },
+    ],
+    rating: 4.8,
+    reviewsCount: 250,
+  },
+  {
+    name: "Oasis de Paix",
+    image:
+      "https://images.unsplash.com/photo-1630835425197-50feeba99ecd?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "202 Boulevard de la Détente, 69000 Lyon, France",
+    services: [
+      { name: "Massage ayurvédique", time: "90 minutes", price: 100 },
+      { name: "Massage des pieds", time: "30 minutes", price: 35 },
+    ],
+    rating: 4.0,
+    reviewsCount: 70,
+  },
+  {
+    name: "Refuge du Silence",
+    image:
+      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "303 Chemin du Repos, 33000 Bordeaux, France",
+    services: [
+      { name: "Massage Shiatsu", time: "60 minutes", price: 75 },
+      { name: "Massage sportif", time: "60 minutes", price: 80 },
+    ],
+    rating: 4.3,
+    reviewsCount: 120,
+  },
+  {
+    name: "Pause Zen",
+    image:
+      "https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=2929&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "404 Voie de la Tranquillité, 44000 Nantes, France",
+    services: [
+      { name: "Massage aromathérapie", time: "60 minutes", price: 70 },
+      { name: "Massage facial", time: "45 minutes", price: 65 },
+    ],
+    rating: 4.6,
+    reviewsCount: 180,
+  },
+  {
+    name: "Lueur Intérieure",
+    image:
+      "https://images.unsplash.com/photo-1545463913-5083aa7359a6?q=80&w=2822&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    address: "505 Avenue du Zen, 67000 Strasbourg, France",
+    services: [
+      { name: "Massage Lomi Lomi", time: "90 minutes", price: 110 },
+      { name: "Massage du cuir chevelu", time: "30 minutes", price: 40 },
+    ],
+    rating: 4.4,
+    reviewsCount: 140,
+  },
+];
 
 export default async function Home() {
   const { banner_section } = await getHome();
@@ -26,6 +127,15 @@ export default async function Home() {
 
       {/* Search Section */}
       <SearchSection />
+
+      <Container
+        as="section"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 md:p-6"
+      >
+        {professionals.map((provider, index) => (
+          <ProfessionalCard {...{ ...provider }} key={index} />
+        ))}
+      </Container>
     </main>
   );
 }
