@@ -1,5 +1,4 @@
 import { defineField, defineType } from "sanity";
-import { DocumentIcon } from "@sanity/icons";
 import { Home } from "lucide-react";
 
 export default defineType({
