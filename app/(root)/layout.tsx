@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { PropsWithChildren } from "react";
-import { Header } from "@/components/layout";
+import { Footer, Header } from "@/components/layout";
 import { ClerkProvider } from "@clerk/nextjs";
 import { frFR } from "@clerk/localizations";
 
@@ -27,8 +27,8 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
       <html lang="fr">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <Header />
-
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
